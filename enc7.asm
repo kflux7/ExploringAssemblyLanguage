@@ -1,4 +1,4 @@
-;Lab 4 Encryption
+
 ;Program to encrypt strings w user input using encryption key via toggling using 
 ;  XOR technique
 ; Encryption key is stored in x3100
