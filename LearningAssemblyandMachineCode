@@ -3,8 +3,8 @@ The result is put in the memory address x3101. Then it will count how many 1’s
 The result is placed in the memory address x3102.
 
 Assembly Code	            Machine Code
-ORIG x 3000	             0011000000000000
-LD R1 x3100	             0010001011111111
+ORIG x 3000	            0011000000000000
+LD R1 x3100	            0010001011111111
 AND R2 R2 #0	            0101010010100000
 ADD R2 R2 #1	            0001010010100001
 AND R3 R1 R2	            0101011001000010
