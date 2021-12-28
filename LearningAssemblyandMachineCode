@@ -1,0 +1,41 @@
+Assembly code that uses LC-3 to check if the value in the specified memory address x3100 is even or odd. 
+The result is put in the memory address x3101. Then it will count how many 1’s is in x3100. 
+The result is placed in the memory address x3102.
+
+Assembly Code	            Machine Code
+ORIG x 3000	              0011000000000000
+LD R1 x3100	              0010001011111111
+AND R2 R2 #0	            0101010010100000
+ADD R2 R2 #1	            0001010010100001
+AND R3 R1 R2	            0101011001000010
+STR R3 M[X3101]	          0011011011111100
+AND R4 R4 #0	            0101100100100000
+AND R5 R5 #0	            0101101101100000
+AND R5 R5 #16	            0001101101101111
+AND R6 R1 R2	            0101110001000010
+BrZ          x-01	        0000010000000001
+ADD R4 R4 #1	            0001100100100001
+ADD R2 R2 R2	            0001010010000010
+ADD R5 R5 #-1	            0001101101111111
+BrP          x-06	        0000001111111010
+STR R4 M[x3102]	          0011100011110011
+HALT	                    1111000000100101
+
+**The value set in memory address x3100 is 5. **
+
+Flow Chart: 
+LD x3100 into R1  Clear R2  Value is checked if even or odd using mask 
+ Result is stored in R3  Result is moved from R3 to memory address x3101 
+ Clear R4 used as counter (sum)  Clear R5 used as a loop counter 
+ Mask to check is 1 or 0  if equal to 1, increment R4  if equal to 0, branch 
+ Shift mask to L  Decrement to R5 
+ if positive, branch to restart loop (loop 16 times)  Result in R4 store to x3102  Halt
+
+Mask using the operator AND. Initializing register by clearing it; 
+clearing registers by using AND operator.
+
+RECAP:
+Value 5 set to M[x3100]. Result x0001 placed in memory address x3101. 
+The sum of 1’s in 16 bit is placed in memory address x3102, result x0002 was found. 
+Trial an even number, the value 8. 
+Results in following memory addresses x3101 and x3102 as x0000 and x0001, respectively.
