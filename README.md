@@ -2,6 +2,7 @@
 ComputerOrganizationAndArchitecture Works.
 
 LC3 Simulator and Editor is used for this project.
+LearningAssemblyandMachineCode : Learning assembly Language and machine code to find if value in memory address is even or odd.
 
 NUM2.asm : Performs multiplication and division calculation.
 
